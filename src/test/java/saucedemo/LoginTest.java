@@ -21,15 +21,15 @@ public class LoginTest {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions=new ChromeOptions();
-        chromeOptions.addArguments("--headless");
-        chromeOptions.addArguments("--no-sandbox");
-        chromeOptions.addArguments("--disable-gpu");
+        //chromeOptions.addArguments("--headless");
+       // chromeOptions.addArguments("--no-sandbox");
+        //chromeOptions.addArguments("--disable-gpu");
         driver= new ChromeDriver(chromeOptions);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://www.saucedemo.com/");
     }
-    @Test
+    @Test(groups = "regression",priority = 1)
     public void loginTest(){
         LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
         loginPage.login(USERNAME, PASSWORD);
