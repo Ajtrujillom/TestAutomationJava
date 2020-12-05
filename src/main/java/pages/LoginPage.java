@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPage {
+public class LoginPage extends BasePage{
     @FindBy(css = ".form_input#user-name")
     private WebElement userInput;
 
@@ -14,6 +14,10 @@ public class LoginPage {
 
     @FindBy(css = ".btn_action")
     private WebElement loginBtn;
+
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    }
 
     public void login(String username, String password){
         enterUsername(username);

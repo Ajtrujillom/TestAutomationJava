@@ -13,34 +13,14 @@ import pages.LoginPage;
 
 import java.util.concurrent.TimeUnit;
 
-public class LoginTest {
-    private final static String USERNAME="standard_user";
-    private final static String PASSWORD="secret_sauce";
-    private ChromeDriver driver;
-    @BeforeTest
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions chromeOptions=new ChromeOptions();
-        //chromeOptions.addArguments("--headless");
-       // chromeOptions.addArguments("--no-sandbox");
-        //chromeOptions.addArguments("--disable-gpu");
-        driver= new ChromeDriver(chromeOptions);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://www.saucedemo.com/");
-    }
+public class LoginTest extends BaseTest {
+
     @Test(groups = "regression",priority = 1)
     public void loginTest(){
         LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
         loginPage.login(USERNAME, PASSWORD);
         LandingPage landingPage=PageFactory.initElements(driver,LandingPage.class);
         Assert.assertTrue(landingPage.isHeaderVisible());
-    }
-
-    @AfterTest
-    public void tearDown(){
-        driver.close();
-        driver.quit();
     }
 
 }
