@@ -17,8 +17,6 @@ public class LoginTest extends BaseTest {
 
     @Test(groups = "regression",priority = 1)
     public void loginTest(){
-        LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
-        loginPage.login(USERNAME, PASSWORD);
         LandingPage landingPage=PageFactory.initElements(driver,LandingPage.class);
         Assert.assertTrue(landingPage.isHeaderVisible());
     }
