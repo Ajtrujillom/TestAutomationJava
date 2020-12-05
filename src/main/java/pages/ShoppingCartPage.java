@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class ShoppingCartPage extends BasePage {
+
     @FindBy(css="a.btn_action")
     private WebElement checkoutBtn;
 
