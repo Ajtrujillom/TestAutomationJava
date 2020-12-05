@@ -3,8 +3,9 @@ package saucedemo;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.*;
+import pages.LoginPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,6 +24,8 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://www.saucedemo.com/");
+        LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
+        loginPage.login(USERNAME, PASSWORD);
     }
 
     @AfterClass
